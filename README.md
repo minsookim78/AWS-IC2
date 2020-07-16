@@ -6,3 +6,4 @@
 # export AWS_SECRET_ACCESS_KEY=
 
 # lormadus/aws-devops-essential
+#https://backlog.com/git-tutorial/kr
