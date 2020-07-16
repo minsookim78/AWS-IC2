@@ -7,3 +7,5 @@
 
 # lormadus/aws-devops-essential
 #https://backlog.com/git-tutorial/kr
+#https://ecsworkshop.com/introduction/
+#https://eksworkshop.com/introduction/
