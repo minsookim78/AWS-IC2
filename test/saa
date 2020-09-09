@@ -1,0 +1,247 @@
+
+1. A solutions architect is designing a solution where users will be directed to a backup static error page if the primary website is unavailable. The primary website's DNS records are hosted in Amazon Route 53 where their domain is pointing to an Application Load Balancer (ALB).
+Which configuration should the solutions architect use to meet the company's needs while minimizing changes and infrastructure overhead?
+
+A. Point a Route 53 alias record to an Amazon CloudFront distribution with the ALB as one of its origins. Then, create custom error pages for the distribution.
+B. Set up a Route 53 active-passive failover configuration. Direct traffic to a static error page hosted within an Amazon S3 bucket when Route 53 health checks determine that the ALB endpoint is unhealthy.
+C. Update the Route 53 record to use a latency-based routing policy. Add the backup static error page hosted within an Amazon S3 bucket to the record so the traffic is sent to the most responsive endpoints.
+D. Set up a Route 53 active-active configuration with the ALB and an Amazon EC2 instance hosting a static error page as endpoints. Route 53 will only send requests to the instance if the health checks fail for the ALB.
+
+B
+
+
+2. A solutions architect is designing a high performance computing (HPC) workload on Amazon EC2. The EC2 instances need to communicate to each other frequently and require network performance with low latency and high throughput.
+Which EC2 configuration meets these requirements?
+
+A. Launch the EC2 instances in a cluster placement group in one Availability Zone.
+B. Launch the EC2 instances in a spread placement group in one Availability Zone.
+C. Launch the EC2 instances in an Auto Scaling group in two Regions and peer the VPCs.
+D. Launch the EC2 instances in an Auto Scaling group spanning multiple Availability Zones.
+
+A
+
+3. A company wants to host a scalable web application on AWS. The application will be accessed by users from different geographic regions of the world. Application users will be able to download and upload unique data up to gigabytes in size. The development team wants a cost-effective solution to minimize upload and download latency and maximize performance.
+What should a solutions architect do to accomplish this?
+
+A. Use Amazon S3 with Transfer Acceleration to host the application.
+B. Use Amazon S3 with CacheControl headers to host the application.
+C. Use Amazon EC2 with Auto Scaling and Amazon CloudFront to host the application.
+D. Use Amazon EC2 with Auto Scaling and Amazon ElastiCache to host the application.
+
+C
+4. A company is migrating from an on-premises infrastructure to the AWS Cloud. One of the company's applications stores files on a Windows file server farm that uses Distributed File System Replication (DFSR) to keep data in sync. A solutions architect needs to replace the file server farm.
+Which service should the solutions architect use?
+A. Amazon EFS
+B. Amazon FSx
+C. Amazon S3
+D. AWS Storage Gateway
+
+B
+
+5. A company has a legacy application that process data in two parts. The second part of the process takes longer than the first, so the company has decided to rewrite the application as two microservices running on Amazon ECS that can scale independently.
+How should a solutions architect integrate the microservices?
+
+A. Implement code in microservice 1 to send data to an Amazon S3 bucket. Use S3 event notifications to invoke microservice 2.
+B. Implement code in microservice 1 to publish data to an Amazon SNS topic. Implement code in microservice 2 to subscribe to this topic.
+C. Implement code in microservice 1 to send data to Amazon Kinesis Data Firehose. Implement code in microservice 2 to read from Kinesis Data Firehose.
+D. Implement code in microservice 1 to send data to an Amazon SQS queue. Implement code in microservice 2 to process messages from the queue.
+
+D
+
+6. A company captures clickstream data from multiple websites and analyzes it using batch processing. The data is loaded nightly into Amazon Redshift and is consumed by business analysts. The company wants to move towards near-real-time data processing for timely insights. The solution should process the streaming data with minimal effort and operational overhead.
+Which combination of AWS services are MOST cost-effective for this solution? (Choose two.)
+
+A. Amazon EC2
+B. AWS Lambda
+C. Amazon Kinesis Data Streams
+D. Amazon Kinesis Data Firehose
+E. Amazon Kinesis Data Analytics
+
+D+E - The sentence says that they wants to move towards near-real tiem data processing.
+This means that the ingestion of data, click streams are injected into Kinesis Data Firehose which sends the data toward Kinesis Data analytics to business analysis.
+I skip lambda because in order to send the click streams to analytics takes more effort to send to KinesisData Analytics. The question say combination, and natural combination of kinesis data anlytics is with kinesis firehose.
+If the statement where real-time should be data streams instead near real time of kinesis firehose. So summarizing:
+A) Amazon EC2 - expensive
+B) AWS lambda - non minimal effort
+C) Kinesis Data Stream - Non near real time
+D) Kinesis Data Firehose- By default the manner to ingest data - CORRECT
+E) Kinesis Data Analytics- We need perform analytics - CORRECT
+
+7. A company's application runs on Amazon EC2 instances behind an Application Load Balancer (ALB). The instances run in an Amazon EC2 Auto Scaling group across multiple Availability Zones. On the first day of every month at midnight, the application becomes much slower when the month-end financial calculation batch executes. This causes the CPU utilization of the EC2 instances to immediately peak to 100%, which disrupts the application.
+What should a solutions architect recommend to ensure the application is able to handle the workload and avoid downtime?
+A. Configure an Amazon CloudFront distribution in front of the ALB.
+B. Configure an EC2 Auto Scaling simple scaling policy based on CPU utilization.
+C. Configure an EC2 Auto Scaling scheduled scaling policy based on the monthly schedule.
+D. Configure Amazon ElastiCache to remove some of the workload from the EC2 instances.
+
+C
+
+8. A company runs a multi-tier web application that hosts news content. The application runs on Amazon EC2 instances behind an Application Load Balancer. The instances run in an EC2 Auto Scaling group across multiple Availability Zones and use an Amazon Aurora database. A solutions architect needs to make the application more resilient to periodic increases in request rates.
+Which architecture should the solutions architect implement? (Choose two.)
+
+A. Add AWS Shield.
+B. Add Aurora Replica.
+C. Add AWS Direct Connect.
+D. Add AWS Global Accelerator.
+E. Add an Amazon CloudFront distribution in front of the Application Load Balancer.
+
+B,E
+
+9. An application running on AWS uses an Amazon Aurora Multi-AZ deployment for its database. When evaluating performance metrics, a solutions architect discovered that the database reads are causing high I/O and adding latency to the write requests against the database.
+What should the solutions architect do to separate the read requests from the write requests?
+
+A. Enable read-through caching on the Amazon Aurora database.
+B. Update the application to read from the Multi-AZ standby instance.
+C. Create a read replica and modify the application to use the appropriate endpoint.
+D. Create a second Amazon Aurora database and link it to the primary database as a read replica.
+
+B.
+
+10. A recently acquired company is required to build its own infrastructure on AWS and migrate multiple applications to the cloud within a month. Each application has approximately 50 TB of data to be transferred. After the migration is complete, this company and its parent company will both require secure network connectivity with consistent throughput from their data centers to the applications. A solutions architect must ensure one-time data migration and ongoing network connectivity.
+Which solution will meet these requirements?
+
+A. AWS Direct Connect for both the initial transfer and ongoing connectivity.
+B. AWS Site-to-Site VPN for both the initial transfer and ongoing connectivity.
+C. AWS Snowball for the initial transfer and AWS Direct Connect for ongoing connectivity.
+D. AWS Snowball for the initial transfer and AWS Site-to-Site VPN for ongoing connectivity.
+
+D ? it's a 1-to-1 direct connection and then you have up to 90 days to set it up
+
+11. A company serves content to its subscribers across the world using an application running on AWS. The application has several Amazon EC2 instances in a private subnet behind an Application Load Balancer (ALB). Due to a recent change in copyright restrictions, the chief information officer (CIO) wants to block access for certain countries.
+Which action will meet these requirements?
+
+A. Modify the ALB security group to deny incoming traffic from blocked countries.
+B. Modify the security group for EC2 instances to deny incoming traffic from blocked countries.
+C. Use Amazon CloudFront to serve the application and deny access to blocked countries.
+D. Use ALB listener rules to return access denied responses to incoming traffic from blocked countries.
+
+C
+
+12. A product team is creating a new application that will store a large amount of data. The data will be analyzed hourly and modified by multiple Amazon EC2 Linux instances. The application team believes the amount of space needed will continue to grow for the next 6 months.
+Which set of actions should a solutions architect take to support these needs?
+
+A. Store the data in an Amazon EBS volume. Mount the EBS volume on the application instances.
+B. Store the data in an Amazon EFS file system. Mount the file system on the application instances.
+C. Store the data in Amazon S3 Glacier. Update the vault policy to allow access to the application instances.
+D. Store the data in Amazon S3 Standard-Infrequent Access (S3 Standard-IA). Update the bucket policy to allow access to the application instances.
+
+
+B."modified by multiple Amazon EC2 Linux instances." -> EFS (which also grow automatically)
+
+13. A company is migrating a three-tier application to AWS. The application requires a MySQL database. In the past, the application users reported poor application performance when creating new entries. These performance issues were caused by users generating different real-time reports from the application during working hours.
+Which solution will improve the performance of the application when it is moved to AWS?
+
+A. Import the data into an Amazon DynamoDB table with provisioned capacity. Refactor the application to use DynamoDB for reports.
+B. Create the database on a compute optimized Amazon EC2 instance. Ensure compute resources exceed the on-premises database.
+C. Create an Amazon Aurora MySQL Multi-AZ DB cluster with multiple read replicas. Configure the application reader endpoint for reports.
+D. Create an Amazon Aurora MySQL Multi-AZ DB cluster. Configure the application to use the backup instance of the cluster as an endpoint for the reports.
+
+C
+
+14.A solutions architect is deploying a distributed database on multiple Amazon EC2 instances. The database stores all data on multiple instances so it can withstand the loss of an instance. The database requires block storage with latency and throughput to support several million transactions per second per server.
+Which storage solution should the solutions architect use?
+
+A. Amazon EBS
+B. Amazon EC2 instance store
+C. Amazon EFS
+D. Amazon S3
+
+B.  millions of transaction can be achieved only via Instance store
+
+15.Organizers for a global event want to put daily reports online as static HTML pages. The pages are expected to generate millions of views from users around the world. The files are stored in an Amazon S3 bucket. A solutions architect has been asked to design an efficient and effective solution.
+Which action should the solutions architect take to accomplish this?
+
+A. Generate presigned URLs for the files.
+B. Use cross-Region replication to all Regions.
+C. Use the geoproximity feature of Amazon Route 53.
+D. Use Amazon CloudFront with the S3 bucket as its origin.
+
+D.
+
+16. A solutions architect is designing a new service behind Amazon API Gateway. The request patterns for the service will be unpredictable and can change suddenly from 0 requests to over 500 per second. The total size of the data that needs to be persisted in a database is currently less than 1 GB with unpredictable future growth. Data can be queried using simple key-value requests.
+Which combination of AWS services would meet these requirements? (Choose two.)
+
+A. AWS Fargate
+B. AWS Lambda
+C. Amazon DynamoDB
+D. Amazon EC2 Auto Scaling
+E. MySQL-compatible Amazon Aurora
+
+B.C
+
+17. A start-up company has a web application based in the us-east-1 Region with multiple Amazon EC2 instances running behind an Application Load Balancer across multiple Availability Zones. As the company's user base grows in the us-west-1 Region, it needs a solution with low latency and high availability.
+What should a solutions architect do to accomplish this?
+
+A. Provision EC2 instances in us-west-1. Switch the Application Load Balancer to a Network Load Balancer to achieve cross-Region load balancing.
+B. Provision EC2 instances and an Application Load Balancer in us-west-1. Make the load balancer distribute the traffic based on the location of the request.
+C. Provision EC2 instances and configure an Application Load Balancer in us-west-1. Create an accelerator in AWS Global Accelerator that uses an endpoint group that includes the load balancer endpoints in both Regions.
+D. Provision EC2 instances and configure an Application Load Balancer in us-west-1. Configure Amazon Route 53 with a weighted routing policy. Create alias records in Route 53 that point to the Application Load Balancer.
+
+C. Answer is C as the situation described is exactly an use case for AWS Global accelerator https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-benefits-of-migrating.html
+
+18.A solutions architect is designing a solution to access a catalog of images and provide users with the ability to submit requests to customize images. Image customization parameters will be in any request sent to an AWS API Gateway API. The customized image will be generated on demand, and users will receive a link they can click to view or download their customized image. The solution must be highly available for viewing and customizing images.
+What is the MOST cost-effective solution to meet these requirements?
+
+A. Use Amazon EC2 instances to manipulate the original image into the requested customization. Store the original and manipulated images in Amazon S3. Configure an Elastic Load Balancer in front of the EC2 instances.
+B. Use AWS Lambda to manipulate the original image to the requested customization. Store the original and manipulated images in Amazon S3. Configure an Amazon CloudFront distribution with the S3 bucket as the origin.
+C. Use AWS Lambda to manipulate the original image to the requested customization. Store the original images in Amazon S3 and the manipulated images in Amazon DynamoDB. Configure an Elastic Load Balancer in front of the Amazon EC2 instances.
+D. Use Amazon EC2 instances to manipulate the original image into the requested customization. Store the original images in Amazon S3 and the manipulated images in Amazon DynamoDB. Configure an Amazon CloudFront distribution with the S3 bucket as the origin.
+
+B
+
+19. A company is planning to migrate a business-critical dataset to Amazon S3. The current solution design uses a single S3 bucket in the us-east-1 Region with versioning enabled to store the dataset. The company's disaster recovery policy states that all data multiple AWS Regions.
+How should a solutions architect design the S3 solution?
+
+A. Create an additional S3 bucket in another Region and configure cross-Region replication.
+B. Create an additional S3 bucket in another Region and configure cross-origin resource sharing (CORS).
+C. Create an additional S3 bucket with versioning in another Region and configure cross-Region replication.
+D. Create an additional S3 bucket with versioning in another Region and configure cross-origin resource (CORS).
+
+C
+
+20. A company has application running on Amazon EC2 instances in a VPC. One of the applications needs to call an Amazon S3 API to store and read objects. The company's security policies restrict any internet-bound traffic from the applications.
+Which action will fulfill these requirements and maintain security?
+
+A. Configure an S3 interface endpoint.
+B. Configure an S3 gateway endpoint.
+C. Create an S3 bucket in a private subnet.
+D. Create an S3 bucket in the same Region as the EC2 instance.
+
+B Gateway Endpoint https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints-s3.html
+
+21. A company's web application uses an Amazon RDS PostgreSQL DB instance to store its application data. During the financial closing period at the start of every month. Accountants run large queries that impact the database's performance due to high usage. The company wants to minimize the impact that the reporting activity has on the web application.
+What should a solutions architect do to reduce the impact on the database with the LEAST amount of effort?
+
+A. Create a read replica and direct reporting traffic to the replica.
+B. Create a Multi-AZ database and direct reporting traffic to the standby.
+C. Create a cross-Region read replica and direct reporting traffic to the replica.
+D. Create an Amazon Redshift database and direct reporting traffic to the Amazon Redshift database.
+
+A.
+
+22. A company wants to migrate a high performance computing (HPC) application and data from on-premises to the AWS Cloud. The company uses tiered storage on premises with hot high-performance parallel storage to support the application during periodic runs of the application, and more economical cold storage to hold the data when the application is not actively running.
+Which combination of solutions should a solutions architect recommend to support the storage needs of the application? (Choose two.)
+
+A. Amazon S3 for cold data storage
+B. Amazon EFS for cold data storage
+C. Amazon S3 for high-performance parallel storage
+D. Amazon FSx for Lustre for high-performance parallel storage
+E. Amazon FSx for Windows for high-performance parallel storage
+
+A,D Option A for cold storage and option D, FSx for Lustre as high performance https://aws.amazon.com/pt/fsx/lustre/ 
+
+23. A company's application is running on Amazon EC2 instances in a single Region. In the event of a disaster, a solutions architect needs to ensure that the resources can also be deployed to a second Region.
+Which combination of actions should the solutions architect take to accomplish this? (Choose two.)
+
+A. Detach a volume on an EC2 instance and copy it to Amazon S3.
+B. Launch a new EC2 instance from an Amazon Machine Image (AMI) in a new Region.
+C. Launch a new EC2 instance in a new Region and copy a volume from Amazon S3 to the new instance.
+D. Copy an Amazon Machine Image (AMI) of an EC2 instance and specify a different Region for the destination.
+E. Copy an Amazon Elastic Block Store (Amazon EBS) volume from Amazon S3 and launch an EC2 instance in the destination Region using that EBS volume.
+
+
+
+
+
+
+
