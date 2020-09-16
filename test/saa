@@ -1030,6 +1030,43 @@ D. Deleting logs from Amazon CloudWatch Logs
 
 C
 
+101. A company has an Amazon EC2 instance running on a private subnet that needs to access a public websites to download patches and updates. The company does not want external websites to see the EC2 instance IP address or initiate connection to it.
+How can a solution architect achieve this objective?
+
+A. Create a site-to-site VPN connection between the private subnet and the network in which the public site is deployed.
+B. Create a NAT gateway in a public subnet. Route outbound traffic from the private subnet through the NAI gateway.
+C. Create a network ACL for the private subnet where the EC2 instance deployed only allows access from the IP address range of the public website.
+D. Create a security group that only allows connections from the IP address range of the public website. Attach the security group to the EC2 instance.
+
+B
+
+102. A company must migrate 20 TB of data from a data center to the AWS Cloud within 30 days. The company's network bandwidth is limited to 15 Mbps and cannot exceed 70% utilization. What should a solutions architect do to meet these requirements?
+
+A. Use AWS Snowball.
+B. Use AWS DataSync.
+C. Use a secure VPN connection.
+D. Use Amazon S3 Transfer Acceleration.
+
+A
+
+103. A company has a website running on Amazon EC2 instances across two Availability Zones. The company is expecting spikes in traffic on specific holidays, and wants to provide a consistent user experience. How can a solutions architect meet this requirement?
+
+A. Use step scaling.
+B. Use simple scaling.
+C. Use lifecycle hooks.
+D. Use scheduled scaling.
+
+D
+
+104. An ecommerce company is running a multi-tier application on AWS. The front-end and backend tiers both run on Amazon EC2, and the database runs on Amazon
+RDS for MySQL. The backend tier communicates with the RDS instance. There are frequent calls to return identical datasets from the database that are causing performance slowdowns.
+Which action should be taken to improve the performance of the backend?
+
+A. Implement Amazon SNS to store the database calls.
+B. Implement Amazon ElastiCache to cache the large datasets.
+C. Implement an RDS for MySQL read replica to cache database calls.
+D. Implement Amazon Kinesis Data Firehose to stream the calls to the database.
+
 
 
 
